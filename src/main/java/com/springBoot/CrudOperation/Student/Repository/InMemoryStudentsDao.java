@@ -1,7 +1,6 @@
 package com.springBoot.CrudOperation.Student.Repository;
 
 import com.springBoot.CrudOperation.Student.Entity.Students;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -25,13 +24,13 @@ public class InMemoryStudentsDao {
 
 
     public Students findByEmail(String email) {
-        return STUDENTS.stream().filter(students -> email.equals(students.getEmailName())).findFirst().orElse(null);
+        return STUDENTS.stream().filter(students -> email.equals(students.getEmail())).findFirst().orElse(null);
     }
 
 
     public Students update(Students students) {
         var studentIndex = IntStream.range(0,STUDENTS.size())
-                .filter(index-> STUDENTS.get(index).getEmailName().equals(students.getEmailName()))
+                .filter(index-> STUDENTS.get(index).getEmail().equals(students.getEmail()))
                 .findFirst().orElse(-1);
         if(studentIndex>-1){
             STUDENTS.set(studentIndex,students);

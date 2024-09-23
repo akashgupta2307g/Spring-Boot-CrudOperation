@@ -1,14 +1,31 @@
 package com.springBoot.CrudOperation.Student.Entity;
 
-public class Students {
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "Students")
+public class Students {
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String firstName;
 
-    public Students(String firstName, String lstName, String mobNumber, String emailName) {
+    public Students() {
+    }
+
+    public Students(String firstName, String lstName, String mobNumber, String email) {
         this.firstName = firstName;
         this.lstName = lstName;
         this.mobNumber = mobNumber;
-        this.emailName = emailName;
+        this.email = email;
     }
 
     private String lstName;
@@ -37,15 +54,16 @@ public class Students {
         this.mobNumber = mobNumber;
     }
 
-    public String getEmailName() {
-        return emailName;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailName(String emailName) {
-        this.emailName = emailName;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     private String mobNumber;
-    private String emailName;
+    @Column(unique = true)
+    private String email;
 
 }

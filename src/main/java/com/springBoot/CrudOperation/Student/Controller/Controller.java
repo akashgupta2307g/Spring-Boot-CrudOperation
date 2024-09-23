@@ -4,14 +4,17 @@ package com.springBoot.CrudOperation.Student.Controller;
 import com.springBoot.CrudOperation.Student.Entity.Students;
 import com.springBoot.CrudOperation.Student.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+
 @RequestMapping("/api/v1/students")
 public class Controller {
     @Autowired
+//    @Qualifier("DB")
     private StudentService studentService;
 
     @PostMapping
